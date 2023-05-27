@@ -3,7 +3,9 @@ package com.example.parcial2_csanchez_evergara_mnurinda;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -41,6 +43,36 @@ public class RegistroActivity extends AppCompatActivity {
 
     public void SaveUser(View v) {
         try {
+            String nameEntered = name.getText().toString();
+            String IDEntered = ID.getText().toString();
+            String ageEntered = age.getText().toString();
+            String usernameEntered = username.getText().toString();
+            String passwordEntered = password.getText().toString();
+
+            if (TextUtils.isEmpty(usernameEntered)) {
+                username.setError("Ingrese el username");
+                return;
+            }
+
+            if (TextUtils.isEmpty(passwordEntered)) {
+                password.setError("Ingrese la contraseña del usuario");
+                return;
+            }
+
+            if (TextUtils.isEmpty(nameEntered)) {
+                name.setError("Ingrese un nombre");
+                return;
+            }
+
+            if (TextUtils.isEmpty(IDEntered)) {
+                ID.setError("Ingrese una cédula");
+                return;
+            }
+
+            if (TextUtils.isEmpty(ageEntered)) {
+                age.setError("Ingrese la edad del usuario");
+                return;
+            }
 
             String userType = "";
             int selectedRadioButtonId = usertype.getCheckedRadioButtonId();
@@ -49,23 +81,28 @@ public class RegistroActivity extends AppCompatActivity {
                 userType = "Administrador";
             } else if (selectedRadioButtonId == R.id.rbCliente) {
                 userType = "Cliente";
+            } else {
+                this.Notify("Seleccione el tipo de usuario");
+                return;
             }
 
             String save =
-                    name.getText().toString() + "|" +
-                    ID.getText().toString() + "|" +
-                    age.getText().toString() + "|" +
-                    username.getText().toString() + "|" +
-                    password.getText().toString() + "|" +
+                    nameEntered + "|" +
+                    IDEntered + "|" +
+                    ageEntered + "|" +
+                    usernameEntered + "|" +
+                    passwordEntered + "|" +
                     userType + "~";
 
             int res = SaveFile(save);
 
             if(res == 1){
-                this.Notify("Cooool, se guardo el Dato io");
+                this.Notify("Usuario guardado");
             } else {
-                this.Notify("Exploto Iooooo, correeeeeeee ");
+                this.Notify("Hubo un error, no se guardo el usuario");
             }
+
+            startActivity(new Intent(this, MainActivity.class));
 
         }catch (Exception e) {
             this.Notify("Error => "+e.getMessage());

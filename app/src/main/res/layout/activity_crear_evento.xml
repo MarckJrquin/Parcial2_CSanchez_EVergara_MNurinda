@@ -7,9 +7,69 @@
     tools:context=".CrearEventoActivity"
     android:orientation="vertical">
 
-    <TextView
+    <RadioGroup
+        android:id="@+id/radioGroupOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rbOption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_launcher_background"
+            style="@style/RadioButtonNoSelector"/>
+
+        <RadioButton
+            android:id="@+id/rbOption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_launcher_background"
+            style="@style/RadioButtonNoSelector"/>
+
+        <RadioButton
+            android:id="@+id/rbOption3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_launcher_background"
+            style="@style/RadioButtonNoSelector"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/txtNameEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de evento"/>
+
+    <EditText
+        android:id="@+id/txtDescriptionEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción de evento"/>
+
+    <EditText
+        android:id="@+id/txtPlaceEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="lugar del evento"/>
+
+    <EditText
+        android:id="@+id/txtContactEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contacto"/>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin"/>
+        android:text="Crear evento"
+        android:onClick="SaveEvents"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"/>
 
 </LinearLayout>

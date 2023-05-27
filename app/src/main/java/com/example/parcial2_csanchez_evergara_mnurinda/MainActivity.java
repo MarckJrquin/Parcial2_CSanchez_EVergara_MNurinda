@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -42,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (!loggedInUser.equals("")) {
 
-            if(loggedInUserType.equals("Administrator")) {
-                startActivity(new Intent(this, CrearEventoActivity.class));
+            if(loggedInUserType.equals("Administrador")) {
+                startActivity(new Intent(this, AdminHomeActivity.class));
             }else if (loggedInUserType.equals("Cliente")) {
-                startActivity(new Intent(this, HistorialEventosActivity.class));
+                startActivity(new Intent(this, ClienteHomeActivity.class));
             }
         }
     }
@@ -54,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
         try {
             String userEntered = user.getText().toString();
             String passwordEntered = password.getText().toString();
+
+            if (TextUtils.isEmpty(userEntered)) {
+                user.setError("Ingrese el username");
+                return;
+            }
+
+            if (TextUtils.isEmpty(passwordEntered)) {
+                password.setError("Ingrese una contraseña");
+                return;
+            }
 
             List<Users> users = FileToList();
 
@@ -77,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     logged = true;
 
                     if(userItem.getUsertype().equals("Administrador")){
-                        startActivity(new Intent(this, CrearEventoActivity.class));
+                        startActivity(new Intent(this, AdminHomeActivity.class));
                     } else if(userItem.getUsertype().equals("Cliente")){
-                        startActivity(new Intent(this, HistorialEventosActivity.class));
+                        startActivity(new Intent(this, ClienteHomeActivity.class));
                     }
                 }
             }

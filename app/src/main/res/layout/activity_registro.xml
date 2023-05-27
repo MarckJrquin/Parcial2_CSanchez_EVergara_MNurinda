@@ -54,24 +54,32 @@
         android:hint="introduzca la edad"
         android:textSize="25dp"/>
 
-    <RadioGroup
-        android:id="@+id/rgUsertype"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/radioGroupWrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/rbAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Administrador"/>
+        <RadioGroup
+            android:id="@+id/rgUsertype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/rbCliente"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Cliente"/>
+            <RadioButton
+                android:id="@+id/rbAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Administrador"/>
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/rbCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cliente"/>
+
+        </RadioGroup>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
