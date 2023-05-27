@@ -24,7 +24,7 @@ public class ClienteHomeActivity extends AppCompatActivity {
     }
 
     private void initControllers() {
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textview);
     }
 
     private void DataMapping() {
@@ -64,6 +64,10 @@ public class ClienteHomeActivity extends AppCompatActivity {
         editor.commit();
 
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void ViewEventList(View v){
+        startActivity(new Intent(this, ListaClienteActivity.class));
     }
 
     private void notify(String message) {

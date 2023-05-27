@@ -2,19 +2,20 @@ package com.example.parcial2_csanchez_evergara_mnurinda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.EventAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
+import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerListaDeEventosActivity extends AppCompatActivity {
+public class ListaClienteActivity extends AppCompatActivity {
 
     ListView lstEvents;
 
@@ -22,11 +23,11 @@ public class VerListaDeEventosActivity extends AppCompatActivity {
 
     private List<Event> eventList;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver_lista_de_eventos);
+        setContentView(R.layout.activity_lista_cliente);
+
         this.initControllers();
         this.DataMapping();
     }
