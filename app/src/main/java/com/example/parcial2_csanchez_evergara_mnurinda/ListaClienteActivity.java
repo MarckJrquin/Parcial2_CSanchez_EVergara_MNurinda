@@ -22,8 +22,8 @@ public class ListaClienteActivity extends AppCompatActivity {
     EventAdapter adapter;
 
     private List<Event> eventList;
-
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cliente);
