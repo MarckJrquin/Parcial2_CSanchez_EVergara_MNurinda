@@ -7,15 +7,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.Admin.EventAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
+import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
+
+import java.util.List;
 
 public class ClienteHomeActivity extends AppCompatActivity {
 
     TextView textView;
+    ListView lstEvents;
+    EventAdapter adapter;
+    private List<Event> eventList;
+
+    TextView lblClienteName,lblClienteUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +37,8 @@ public class ClienteHomeActivity extends AppCompatActivity {
     }
 
     private void initControllers() {
-        textView = (TextView) findViewById(R.id.textview);
+        lblClienteName = (TextView) findViewById(R.id.lblClienteName);
+        lblClienteUsername = (TextView) findViewById(R.id.lblClienteUsername);
     }
 
     private void DataMapping() {
@@ -48,7 +59,8 @@ public class ClienteHomeActivity extends AppCompatActivity {
                     "Usuario: " + username + ", " +
                     "Tipo de usuario: " + usertype;
 
-            textView.setText(textviewData);
+            lblClienteName.setText(name);
+            lblClienteUsername.setText(username);
         } catch (Exception e){
             this.notify("Error => " + e.getMessage());
         }

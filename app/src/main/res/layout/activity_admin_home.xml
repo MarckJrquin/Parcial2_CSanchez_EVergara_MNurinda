@@ -25,6 +25,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingBottom="38dp"
+        android:elevation="30dp"
         android:orientation="horizontal"
         android:background="@drawable/bg_rounded_bottom">
 

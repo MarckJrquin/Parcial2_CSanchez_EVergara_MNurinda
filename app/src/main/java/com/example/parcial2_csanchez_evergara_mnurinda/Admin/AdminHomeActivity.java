@@ -15,7 +15,7 @@ import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    TextView textview;
+    TextView lblAdminName,lblAdminUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,8 @@ public class AdminHomeActivity extends AppCompatActivity {
     }
 
     private void initControllers() {
-        textview = (TextView) findViewById(R.id.textview);
+        lblAdminName = (TextView) findViewById(R.id.lblAdminName);
+        lblAdminUsername = (TextView) findViewById(R.id.lblAdminUsername);
     }
 
     private void DataMapping() {
@@ -42,13 +43,8 @@ public class AdminHomeActivity extends AppCompatActivity {
             username = loggedUser.getString("username", "");
             usertype = loggedUser.getString("usertype", "");
 
-            String textviewData = "Nombre: " + name + ", " +
-                                  "Cedula: " + ID + ", " +
-                                  "Edad: " + age + ", " +
-                                  "Usuario: " + username + ", " +
-                                  "Tipo de usuario: " + usertype;
-
-            textview.setText(textviewData);
+            lblAdminName.setText(name);
+            lblAdminUsername.setText(username);
         } catch (Exception e){
             this.notify("Error => " + e.getMessage());
         }
