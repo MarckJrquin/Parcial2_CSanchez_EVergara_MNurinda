@@ -3,10 +3,14 @@ package com.example.parcial2_csanchez_evergara_mnurinda.Admin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.Cliente.ClienteHomeActivity;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
@@ -40,6 +44,26 @@ public class VerListaDeEventosActivity extends AppCompatActivity {
 
         adapter = new EventAdapter(getApplicationContext(), FileToList());
         lstEvents.setAdapter(adapter);
+
+        lstEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Obtener el elemento seleccionado
+                Event eventoSeleccionado = (Event) parent.getItemAtPosition(position);
+
+                // Obtener el ID del elemento seleccionado
+                int eventId = eventoSeleccionado.getEventID();
+
+                // Crear un Intent para iniciar la siguiente actividad
+                Intent intent = new Intent(VerListaDeEventosActivity.this, VerAsistenciaActivity.class);
+
+                // Pasar el ID del elemento seleccionado a la siguiente actividad
+                intent.putExtra("eventId", eventId);
+
+                // Iniciar la siguiente actividad
+                startActivity(intent);
+            }
+        });
     }
 
     private void Notify(String message) {

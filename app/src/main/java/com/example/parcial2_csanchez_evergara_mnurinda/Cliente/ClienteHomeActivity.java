@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.parcial2_csanchez_evergara_mnurinda.Cliente.ListaClienteAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.Admin.EventAdapter;
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.FileManager;
 import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
@@ -27,6 +28,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,11 +86,17 @@ public class ClienteHomeActivity extends AppCompatActivity {
                     // Obtener los valores específicos del elemento seleccionado
                     String eventId = String.valueOf(eventoSeleccionado.getEventID());
                     String eventName = eventoSeleccionado.getName();
-                    // Obtener otros valores según sea necesario
 
-                    // Realizar cualquier acción con los valores obtenidos
-                    // ...
                     Notify(eventId);
+
+                    String save = eventId + "|" + userID + "~" ;
+                    int res = SaveFile(save);
+
+                    if(res == 1){
+                        Notify("Has asistido al evento "+ eventName);
+                    } else {
+                        Notify("Error, no se guardo la asistencia");
+                    }
                 }
             });
         } catch (Exception e){
@@ -112,6 +120,35 @@ public class ClienteHomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    public int SaveFile(String guardar){
+        try {
+            String OldText = "";
+
+            File file = new File(getFilesDir(), "asistencia.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                BufferedReader bf = new BufferedReader(new InputStreamReader(openFileInput("asistencia.txt")));
+                String text = bf.readLine();
+
+                if (!text.isEmpty()) {
+                    OldText = text;
+                }
+            }
+
+            OutputStreamWriter fout = new OutputStreamWriter(openFileOutput("asistencia.txt", Context.MODE_PRIVATE));
+            fout.write(OldText + guardar);
+            fout.close();
+
+            return 1;
+
+        } catch (Exception ex) {
+            Log.e("Ficheros", "Error al escribir fichero a memoria interna");
+        }
+
+        return 0;
+    }
+
     private List<Event> FileToList() {
         List<Event> events = new ArrayList<Event>();
 
@@ -133,14 +170,12 @@ public class ClienteHomeActivity extends AppCompatActivity {
                         eventFields[4],
                         eventFields[5]
                 );
-
                 events.add(event);
             }
 
         }catch (Exception e) {
             this.Notify("Error => " + e.getMessage());
         }
-
         return events;
     }
 
