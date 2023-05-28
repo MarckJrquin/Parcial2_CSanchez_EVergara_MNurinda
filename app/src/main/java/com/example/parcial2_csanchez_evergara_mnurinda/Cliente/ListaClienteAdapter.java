@@ -24,7 +24,7 @@ public class ListaClienteAdapter extends ArrayAdapter<Event> {
     public View getView(int position, View convertView, ViewGroup parent){
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View item = inflater.inflate(R.layout.listview_events, null);
+        View item = inflater.inflate(R.layout.listview_client_events, null);
 
         ImageView image = (ImageView) item.findViewById(R.id.imageViewEventPhoto);
         image.setImageResource(eventList.get(position).getImage());

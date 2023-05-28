@@ -1,6 +1,8 @@
 package com.example.parcial2_csanchez_evergara_mnurinda.Models;
 
 public class Users {
+
+    private int userID;
     private String name;
     private String ID;
     private int age;
@@ -12,13 +14,22 @@ public class Users {
 
     }
 
-    public Users(String name, String ID, int age, String username, String password, String usertype) {
+    public Users(int userID, String name, String ID, int age, String username, String password, String usertype) {
+        this.userID = userID;
         this.name = name;
         this.ID = ID;
         this.age = age;
         this.username = username;
         this.password = password;
         this.usertype = usertype;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getName() {

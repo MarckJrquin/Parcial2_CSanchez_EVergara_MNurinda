@@ -24,7 +24,7 @@ import java.util.List;
 public class ClienteHomeActivity extends AppCompatActivity {
 
     ListView lstEvents;
-    EventAdapter adapter;
+    ListaClienteAdapter adapter;
     private List<Event> eventList;
 
     TextView lblClienteName,lblClienteUsername;
@@ -51,8 +51,9 @@ public class ClienteHomeActivity extends AppCompatActivity {
         try{
             SharedPreferences loggedUser = getSharedPreferences("login", Context.MODE_PRIVATE);
 
-            String name, ID, age, username, usertype;
+            String userID, name, ID, age, username, usertype;
 
+            userID = loggedUser.getString("userID", "");
             name = loggedUser.getString("name", "");
             ID = loggedUser.getString("ID", "");
             age = loggedUser.getString("age", "");
@@ -62,7 +63,7 @@ public class ClienteHomeActivity extends AppCompatActivity {
             lblClienteName.setText(name);
             lblClienteUsername.setText(username);
 
-            adapter = new EventAdapter(getApplicationContext(), FileToList());
+            adapter = new ListaClienteAdapter(getApplicationContext(), FileToList());
             lstEvents.setAdapter(adapter);
         } catch (Exception e){
             this.Notify("Error => " + e.getMessage());
@@ -73,6 +74,7 @@ public class ClienteHomeActivity extends AppCompatActivity {
         SharedPreferences loggedUser = getSharedPreferences("login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loggedUser.edit();
 
+        editor.putString("userID", "");
         editor.putString("name", "");
         editor.putString("ID", "");
         editor.putString("age", "");
@@ -95,14 +97,15 @@ public class ClienteHomeActivity extends AppCompatActivity {
 
             for( String strEvent : arrEvents ){
 
-                String[] userFields = strEvent.split("\\|");
+                String[] eventFields = strEvent.split("\\|");
 
                 Event event = new Event(
-                        imageCode(userFields[0]),
-                        userFields[1],
-                        userFields[2],
-                        userFields[3],
-                        userFields[4]
+                        Integer.parseInt(eventFields[0]),
+                        imageCode(eventFields[1]),
+                        eventFields[2],
+                        eventFields[3],
+                        eventFields[4],
+                        eventFields[5]
                 );
 
                 events.add(event);

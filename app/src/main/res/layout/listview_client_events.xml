@@ -1,117 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="14dp">
-
-    <ImageView
-        android:id="@+id/imageViewEventPhoto"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/ic_launcher_background"
-        android:scaleType="centerCrop"
-        android:background="@drawable/event_picture_background" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginBottom="20dp">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textViewNameEvent"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewEventPhoto"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Nombre"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fondo6"
+                app:shapeAppearanceOverlay="@style/imagen_redondeada"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripción"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:padding="20dp"
+                android:layout_alignParentBottom="true">
 
-            <TextView
-                android:id="@+id/textViewDescEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Descripción"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewPlaceEvent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="lugar"
+                    android:textColor="#BDBDBD"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Contacto"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_linearlayout_date">
+                    <TextView
+                        android:id="@+id/txtDateEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:id="@+id/txtMonthEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dic"
+                        android:textSize="16dp"/>
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewContactEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Contacto"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lugar"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textViewContactEvent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contacto"
+                        android:textColor="#BDBDBD"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/textViewPlaceEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="lugar"
-                android:textColor="#666666"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textViewNameEvent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Titulo"
+                        android:textColor="@android:color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/textViewDescEvent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Descripción"
+                        android:textColor="#BDBDBD"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:text="Asistir"/>
+
+            </RelativeLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences spUser = getSharedPreferences("login", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spUser.edit();
 
+                    editor.putString("userID", String.valueOf(userItem.getUserID()));
                     editor.putString("name", userItem.getName());
                     editor.putString("ID", userItem.getID());
                     editor.putString("age", String.valueOf(userItem.getAge()));
@@ -124,12 +125,13 @@ public class MainActivity extends AppCompatActivity {
                 String[] userFields = strUser.split("\\|");
 
                 Users user = new Users(
-                        userFields[0],
+                        Integer.parseInt(userFields[0]),
                         userFields[1],
-                        Integer.parseInt(userFields[2]),
-                        userFields[3],
+                        userFields[2],
+                        Integer.parseInt(userFields[3]),
                         userFields[4],
-                        userFields[5]
+                        userFields[5],
+                        userFields[6]
                 );
 
                 users.add(user);

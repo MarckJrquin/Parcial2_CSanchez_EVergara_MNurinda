@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.FileManager;
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.IDGenerator;
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.IDVerifier;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.io.BufferedReader;
@@ -73,6 +76,16 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
             }
 
 
+            int id;
+            boolean isRepeated;
+            do {
+                id = IDGenerator.generarID();
+                isRepeated = IDVerifier.verificarID(id, "eventIDs.txt");
+            } while (isRepeated);
+
+            FileManager.guardarID(id, "eventIDs.txt");
+
+
             if (selectedValue == 1) {
                 placeEvent = "5to5";
             } else if (selectedValue == 2) {
@@ -85,6 +98,7 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
             }
 
             String save =
+                    id + "|" +
                     selectedValue + "|" +
                     nameEvent + "|" +
                     descriptionEvent + "|" +

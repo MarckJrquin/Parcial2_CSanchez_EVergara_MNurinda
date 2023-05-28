@@ -60,6 +60,7 @@ public class ListaClienteActivity extends AppCompatActivity {
                 String[] userFields = strEvent.split("\\|");
 
                 Event event = new Event(
+                        Integer.parseInt(userFields[0]),
                         imageCode(userFields[0]),
                         userFields[1],
                         userFields[2],

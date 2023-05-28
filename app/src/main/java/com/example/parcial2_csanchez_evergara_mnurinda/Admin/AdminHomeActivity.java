@@ -37,6 +37,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
             String name, ID, age, username, usertype;
 
+            name = loggedUser.getString("userID", "");
             name = loggedUser.getString("name", "");
             ID = loggedUser.getString("ID", "");
             age = loggedUser.getString("age", "");
@@ -54,6 +55,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         SharedPreferences loggedUser = getSharedPreferences("login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loggedUser.edit();
 
+        editor.putString("userID", "");
         editor.putString("name", "");
         editor.putString("ID", "");
         editor.putString("age", "");

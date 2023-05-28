@@ -60,11 +60,12 @@ public class VerListaDeEventosActivity extends AppCompatActivity {
                 String[] userFields = strEvent.split("\\|");
 
                 Event event = new Event(
-                        imageCode(userFields[0]),
-                        userFields[1],
+                        Integer.parseInt(userFields[0]),
+                        imageCode(userFields[1]),
                         userFields[2],
                         userFields[3],
-                        userFields[4]
+                        userFields[4],
+                        userFields[5]
                 );
 
                 events.add(event);

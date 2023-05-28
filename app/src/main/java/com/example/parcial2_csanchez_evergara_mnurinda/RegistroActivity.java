@@ -13,6 +13,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.FileManager;
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.IDGenerator;
+import com.example.parcial2_csanchez_evergara_mnurinda.IDGenerator.IDVerifier;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -86,7 +90,17 @@ public class RegistroActivity extends AppCompatActivity {
                 return;
             }
 
+            int id;
+            boolean isRepeated;
+            do {
+                id = IDGenerator.generarID();
+                isRepeated = IDVerifier.verificarID(id, "userIDs.txt");
+            } while (isRepeated);
+
+            FileManager.guardarID(id, "userIDs.txt");
+
             String save =
+                    id + "|" +
                     nameEntered + "|" +
                     IDEntered + "|" +
                     ageEntered + "|" +
