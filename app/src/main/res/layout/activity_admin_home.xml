@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/ben_10"/>
+        android:src="@drawable/event_background"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,10 +21,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="24dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingBottom="38dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="40dp"
         android:elevation="30dp"
         android:orientation="horizontal"
         android:background="@drawable/bg_rounded_bottom">
@@ -41,7 +41,8 @@
                 android:layout_marginBottom="12dp"
                 android:text="Bienvenido"
                 android:textColor="#FFFFFF"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="bold"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -52,8 +53,10 @@
                     android:id="@+id/imgProfileUserImage"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:padding="8dp"
                     android:layout_alignParentLeft="true"
-                    android:src="@drawable/rounded_image"/>
+                    android:background="@drawable/rounded_image"
+                    android:src="@drawable/baseline_person_24"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -74,9 +77,10 @@
                         android:id="@+id/lblAdminUsername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="14sp"
                         android:text="Username"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#757B8C"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -106,6 +110,19 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/> -->
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_above="@+id/btnVerListaDeEventos"
+        android:gravity="center"
+        android:text="Adelante, puedes administar los eventos"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
     <Button
         android:id="@+id/btnVerListaDeEventos"
         android:layout_width="match_parent"
@@ -118,7 +135,7 @@
         android:layout_above="@+id/btnCrearEventos"
         android:text="Ver Eventos"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:background="@drawable/button_rounded_background"
         android:onClick="ViewEventList"/>
 
@@ -134,7 +151,7 @@
         android:padding="12dp"
         android:text="Crear Evento"
         android:background="@drawable/button_rounded_background"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="20dp"
         android:onClick="CreateEvent"/>
 

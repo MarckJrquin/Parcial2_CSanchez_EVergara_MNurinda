@@ -79,11 +79,11 @@ public class VerListaDeEventosActivity extends AppCompatActivity {
 
     public int imageCode(String imageCode) {
         if(Integer.parseInt(imageCode) == 1){
-            return R.drawable.chillout;
-        } else if (Integer.parseInt(imageCode) == 2) {
-            return R.drawable.ic_launcher_background;
-        } else if (Integer.parseInt(imageCode) == 3){
             return R.drawable.d5to5;
+        } else if (Integer.parseInt(imageCode) == 2) {
+            return R.drawable.casajaguar_logo;
+        } else if (Integer.parseInt(imageCode) == 3){
+            return R.drawable.teatro_amador;
         }
         return 0;
     }

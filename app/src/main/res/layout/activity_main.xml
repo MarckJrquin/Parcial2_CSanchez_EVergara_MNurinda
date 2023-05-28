@@ -115,17 +115,18 @@
 
         <EditText
             android:id="@+id/txtPassword"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:drawablePadding="16dp"
-            android:drawableEnd="@drawable/ic_lock_white_24dp"
-            android:fontFamily="@font/calibri"
             android:hint="Password"
+            android:textSize="16sp"
             android:textColorHint="#FFFFFF"
+            android:fontFamily="@font/calibri"
             android:maxLines="1"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:inputType="textPassword"
+            android:drawableEnd="@drawable/ic_lock_white_24dp"
+            android:textColor="@android:color/white"/>
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,33 +136,33 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:layout_gravity="center"
-                android:text="iniciar sesion"
-                android:onClick="LogUser"
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/buttonshapewhitebg"
+                android:text="iniciar sesion"
                 android:fontFamily="@font/calibri"
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:textColor="#96ffffff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/buttonshapewhitebg"
+                android:onClick="LogUser"/>
 
-            <Button
-                android:layout_gravity="center"
-                android:text="registrarse"
-                android:onClick="registrarPersona"
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="registrarse"
                 android:layout_marginStart="16dp"
-                android:background="@drawable/buttonshapewhitebg"
                 android:fontFamily="@font/calibri"
                 android:textAllCaps="false"
                 android:textColor="#96ffffff"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="@drawable/buttonshapewhitebg"
+                android:onClick="registrarPersona"/>
 
         </LinearLayout>
 

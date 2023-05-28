@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,10 +20,11 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class CrearEventoActivity extends AppCompatActivity {
+public class CrearEventoActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText txtNameEvent, txtDescriptionEvent, txtPlaceEvent, txtContactEvent;
-    RadioGroup selectedImageRG;
+    EditText txtNameEvent, txtDescriptionEvent, txtContactEvent;
+    ImageView lastSelectedImage;
+    int selectedValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,15 @@ public class CrearEventoActivity extends AppCompatActivity {
     private void iniController() {
         txtNameEvent = (EditText) findViewById(R.id.txtNameEvent);
         txtDescriptionEvent = (EditText) findViewById(R.id.txtDescriptionEvent);
-        txtPlaceEvent = (EditText) findViewById(R.id.txtPlaceEvent);
         txtContactEvent = (EditText) findViewById(R.id.txtContactEvent);
-        selectedImageRG = (RadioGroup) findViewById(R.id.radioGroupOptions);
+
+        ImageView ivOption1 = findViewById(R.id.ivOption1);
+        ImageView ivOption2 = findViewById(R.id.ivOption2);
+        ImageView ivOption3 = findViewById(R.id.ivOption3);
+
+        ivOption1.setOnClickListener(this);
+        ivOption2.setOnClickListener(this);
+        ivOption3.setOnClickListener(this);
     }
 
     public void SaveEvents(View v) {
@@ -46,8 +54,8 @@ public class CrearEventoActivity extends AppCompatActivity {
             //int image =
             String nameEvent = txtNameEvent.getText().toString();
             String descriptionEvent = txtDescriptionEvent.getText().toString();
-            String placeEvent = txtPlaceEvent.getText().toString();
             String contactEvent = txtContactEvent.getText().toString();
+            String placeEvent = "";
 
             if (TextUtils.isEmpty(nameEvent)) {
                 txtNameEvent.setError("Ingrese el nombre del evento");
@@ -59,33 +67,25 @@ public class CrearEventoActivity extends AppCompatActivity {
                 return;
             }
 
-            if (TextUtils.isEmpty(placeEvent)) {
-                txtPlaceEvent.setError("Ingrese el lugar del evento");
-                return;
-            }
-
             if (TextUtils.isEmpty(contactEvent)) {
                 txtContactEvent.setError("Ingrese un contacto del evento");
                 return;
             }
 
 
-            int imageOption;
-            int selectedRadioButtonId = selectedImageRG.getCheckedRadioButtonId();
-
-            if (selectedRadioButtonId == R.id.rbOption1) {
-                imageOption = 1;
-            } else if (selectedRadioButtonId == R.id.rbOption2) {
-                imageOption = 2;
-            } else if (selectedRadioButtonId == R.id.rbOption3) {
-                imageOption = 3;
+            if (selectedValue == 1) {
+                placeEvent = "5to5";
+            } else if (selectedValue == 2) {
+                placeEvent = "Casa jaguar";
+            } else if (selectedValue == 3) {
+                placeEvent = "Teatro Amador";
             } else {
                 this.Notify("Seleccione una imagen");
                 return;
             }
 
             String save =
-                    imageOption + "|" +
+                    selectedValue + "|" +
                     nameEvent + "|" +
                     descriptionEvent + "|" +
                     placeEvent + "|" +
@@ -133,6 +133,30 @@ public class CrearEventoActivity extends AppCompatActivity {
         }
 
         return 0;
+    }
+
+    @Override
+    public void onClick(View view) {
+        onImageSelected(view);
+    }
+
+    public void onImageSelected(View view) {
+        ImageView selectedImage = (ImageView) view;
+
+        // Deseleccionar la última imagen seleccionada
+        if (lastSelectedImage != null) {
+            lastSelectedImage.setSelected(false);
+        }
+
+        // Seleccionar la imagen actual
+        selectedImage.setSelected(true);
+        lastSelectedImage = selectedImage;
+
+        // Obtener el valor asociado a la imagen seleccionada
+        selectedValue = Integer.parseInt(selectedImage.getTag().toString());
+
+        // Acciones a realizar cuando se selecciona una imagen
+        // Puedes usar la variable 'selectedImage' para obtener información sobre la imagen seleccionada
     }
 
     private void Notify(String message) {

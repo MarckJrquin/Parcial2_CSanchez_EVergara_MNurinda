@@ -16,11 +16,13 @@ import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteHomeActivity extends AppCompatActivity {
 
-    TextView textView;
     ListView lstEvents;
     EventAdapter adapter;
     private List<Event> eventList;
@@ -42,6 +44,7 @@ public class ClienteHomeActivity extends AppCompatActivity {
     private void initControllers() {
         lblClienteName = (TextView) findViewById(R.id.lblClienteName);
         lblClienteUsername = (TextView) findViewById(R.id.lblClienteUsername);
+        lstEvents = (ListView)findViewById(R.id.lstEventsC);
     }
 
     private void DataMapping() {
@@ -56,16 +59,13 @@ public class ClienteHomeActivity extends AppCompatActivity {
             username = loggedUser.getString("username", "");
             usertype = loggedUser.getString("usertype", "");
 
-            String textviewData = "Nombre: " + name + ", " +
-                    "Cedula: " + ID + ", " +
-                    "Edad: " + age + ", " +
-                    "Usuario: " + username + ", " +
-                    "Tipo de usuario: " + usertype;
-
             lblClienteName.setText(name);
             lblClienteUsername.setText(username);
+
+            adapter = new EventAdapter(getApplicationContext(), FileToList());
+            lstEvents.setAdapter(adapter);
         } catch (Exception e){
-            this.notify("Error => " + e.getMessage());
+            this.Notify("Error => " + e.getMessage());
         }
     }
 
@@ -84,11 +84,53 @@ public class ClienteHomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    private List<Event> FileToList() {
+        List<Event> events = new ArrayList<Event>();
+
+        try {
+            BufferedReader fin = new BufferedReader( new InputStreamReader( openFileInput("listaDeEventos.txt") ));
+            String data = fin.readLine();
+
+            String[] arrEvents = data.split("~");
+
+            for( String strEvent : arrEvents ){
+
+                String[] userFields = strEvent.split("\\|");
+
+                Event event = new Event(
+                        imageCode(userFields[0]),
+                        userFields[1],
+                        userFields[2],
+                        userFields[3],
+                        userFields[4]
+                );
+
+                events.add(event);
+            }
+
+        }catch (Exception e) {
+            this.Notify("Error => " + e.getMessage());
+        }
+
+        return events;
+    }
+
+    public int imageCode(String imageCode) {
+        if(Integer.parseInt(imageCode) == 1){
+            return R.drawable.d5to5;
+        } else if (Integer.parseInt(imageCode) == 2) {
+            return R.drawable.casajaguar_logo;
+        } else if (Integer.parseInt(imageCode) == 3){
+            return R.drawable.teatro_amador;
+        }
+        return 0;
+    }
+
     public void ViewEventList(View v){
         startActivity(new Intent(this, ListaClienteActivity.class));
     }
 
-    private void notify(String message) {
+    private void Notify(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
