@@ -1,4 +1,4 @@
-package com.example.parcial2_csanchez_evergara_mnurinda;
+package com.example.parcial2_csanchez_evergara_mnurinda.Cliente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.parcial2_csanchez_evergara_mnurinda.EventAdapter;
+import com.example.parcial2_csanchez_evergara_mnurinda.Admin.EventAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
 

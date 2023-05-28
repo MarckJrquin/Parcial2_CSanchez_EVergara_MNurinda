@@ -1,4 +1,4 @@
-package com.example.parcial2_csanchez_evergara_mnurinda;
+package com.example.parcial2_csanchez_evergara_mnurinda.Cliente;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,12 +13,11 @@ import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.util.List;
 
-public class EventAdapter extends ArrayAdapter<Event> {
-
+public class ListaClienteAdapter extends ArrayAdapter<Event> {
     List<Event> eventList;
 
-    public EventAdapter(Context context, List<Event> events){
-        super(context, R.layout.listview_events, events);
+    public ListaClienteAdapter(Context context, List<Event> events){
+        super(context, R.layout.listview_client_events, events);
         eventList = events;
     }
 
@@ -44,5 +43,4 @@ public class EventAdapter extends ArrayAdapter<Event> {
 
         return item;
     }
-
 }

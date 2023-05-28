@@ -1,4 +1,4 @@
-package com.example.parcial2_csanchez_evergara_mnurinda;
+package com.example.parcial2_csanchez_evergara_mnurinda.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,21 +10,24 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClienteHomeActivity extends AppCompatActivity {
+import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
+import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
-    TextView textView;
+public class AdminHomeActivity extends AppCompatActivity {
+
+    TextView textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cliente_home);
+        setContentView(R.layout.activity_admin_home);
 
         this.initControllers();
         this.DataMapping();
     }
 
     private void initControllers() {
-        textView = (TextView) findViewById(R.id.textview);
+        textview = (TextView) findViewById(R.id.textview);
     }
 
     private void DataMapping() {
@@ -40,12 +43,12 @@ public class ClienteHomeActivity extends AppCompatActivity {
             usertype = loggedUser.getString("usertype", "");
 
             String textviewData = "Nombre: " + name + ", " +
-                    "Cedula: " + ID + ", " +
-                    "Edad: " + age + ", " +
-                    "Usuario: " + username + ", " +
-                    "Tipo de usuario: " + usertype;
+                                  "Cedula: " + ID + ", " +
+                                  "Edad: " + age + ", " +
+                                  "Usuario: " + username + ", " +
+                                  "Tipo de usuario: " + usertype;
 
-            textView.setText(textviewData);
+            textview.setText(textviewData);
         } catch (Exception e){
             this.notify("Error => " + e.getMessage());
         }
@@ -66,12 +69,15 @@ public class ClienteHomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    public void CreateEvent(View v){
+        startActivity(new Intent(this, CrearEventoActivity.class));
+    }
+
     public void ViewEventList(View v){
-        startActivity(new Intent(this, ListaClienteActivity.class));
+        startActivity(new Intent(this, VerListaDeEventosActivity.class));
     }
 
     private void notify(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
 }

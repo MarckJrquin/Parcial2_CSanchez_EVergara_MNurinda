@@ -1,4 +1,4 @@
-package com.example.parcial2_csanchez_evergara_mnurinda;
+package com.example.parcial2_csanchez_evergara_mnurinda.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
+import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

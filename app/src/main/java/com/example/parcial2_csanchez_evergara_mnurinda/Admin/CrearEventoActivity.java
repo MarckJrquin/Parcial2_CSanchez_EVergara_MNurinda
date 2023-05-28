@@ -1,4 +1,4 @@
-package com.example.parcial2_csanchez_evergara_mnurinda;
+package com.example.parcial2_csanchez_evergara_mnurinda.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.io.BufferedReader;
 import java.io.File;

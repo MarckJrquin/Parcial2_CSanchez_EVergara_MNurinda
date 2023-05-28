@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.Admin.AdminHomeActivity;
+import com.example.parcial2_csanchez_evergara_mnurinda.Cliente.ClienteHomeActivity;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Users;
 
 import java.io.BufferedReader;
