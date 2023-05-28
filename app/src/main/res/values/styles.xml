@@ -4,7 +4,7 @@
         <item name="android:button">@android:color/transparent</item>
     </style>
     <!-- Base application theme. -->
-    <style name="Theme.Parcial2_CSanchez_EVergara_MNurinda." parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Parcial2_CSanchez_EVergara_MNurinda" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

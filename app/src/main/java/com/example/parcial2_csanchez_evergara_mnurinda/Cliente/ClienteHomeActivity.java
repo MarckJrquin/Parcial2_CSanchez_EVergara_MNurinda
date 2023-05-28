@@ -7,15 +7,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.Admin.EventAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
+import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
+
+import java.util.List;
 
 public class ClienteHomeActivity extends AppCompatActivity {
 
     TextView textView;
+    ListView lstEvents;
+
+    EventAdapter adapter;
+    private List<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
