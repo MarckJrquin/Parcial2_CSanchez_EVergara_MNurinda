@@ -27,6 +27,9 @@ public class ClienteHomeActivity extends AppCompatActivity {
 
     TextView lblClienteName,lblClienteUsername;
 
+    //EventAdapter adapter;
+    //private List<Event> eventList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
