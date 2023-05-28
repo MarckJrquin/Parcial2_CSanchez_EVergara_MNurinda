@@ -149,23 +149,36 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crear evento"
-                android:onClick="SaveEvents"/>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reset"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Crear evento"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_rounded_background"
+                    android:onClick="SaveEvents"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Reset"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_rounded_background"
+                    android:onClick="resetlbl"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
-
     </LinearLayout>
-
-
 
 </RelativeLayout>

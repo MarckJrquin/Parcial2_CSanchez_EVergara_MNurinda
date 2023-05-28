@@ -35,9 +35,9 @@ public class AdminHomeActivity extends AppCompatActivity {
         try{
             SharedPreferences loggedUser = getSharedPreferences("login", Context.MODE_PRIVATE);
 
-            String name, ID, age, username, usertype;
+            String userID, name, ID, age, username, usertype;
 
-            name = loggedUser.getString("userID", "");
+            userID = loggedUser.getString("userID", "");
             name = loggedUser.getString("name", "");
             ID = loggedUser.getString("ID", "");
             age = loggedUser.getString("age", "");

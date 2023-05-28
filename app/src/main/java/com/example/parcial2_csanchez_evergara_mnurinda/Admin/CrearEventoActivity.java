@@ -75,17 +75,6 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
                 return;
             }
 
-
-            int id;
-            boolean isRepeated;
-            do {
-                id = IDGenerator.generarID();
-                isRepeated = IDVerifier.verificarID(id, "eventIDs.txt");
-            } while (isRepeated);
-
-            FileManager.guardarID(id, "eventIDs.txt");
-
-
             if (selectedValue == 1) {
                 placeEvent = "5to5";
             } else if (selectedValue == 2) {
@@ -97,6 +86,21 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
                 return;
             }
 
+            int id;
+            boolean isRepeated;
+            do {
+                id = IDGenerator.generarID();
+                isRepeated = IDVerifier.verificarID(id, "eventIDs.txt");
+            } while (isRepeated);
+
+            int res0 = SaveFile(String.valueOf(id)+"|", "eventIDs.txt");
+
+            if(res0 == 1){
+                this.Notify("Se guardo el id del evento");
+            } else {
+                this.Notify("Error, no se guardo el id del evento");
+            }
+
             String save =
                     id + "|" +
                     selectedValue + "|" +
@@ -105,7 +109,7 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
                     placeEvent + "|" +
                     contactEvent + "~";
 
-            int res = SaveFile(save);
+            int res = SaveFile(save, "listaDeEventos.txt");
 
             if(res == 1){
                 this.Notify("Se guardo el evento");
@@ -120,6 +124,7 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /*
     public int SaveFile(String guardar){
         try {
             String OldText = "";
@@ -148,6 +153,37 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
 
         return 0;
     }
+    */
+
+    public int SaveFile(String guardar, String FILE_PATH){
+        try {
+            String OldText = "";
+
+            File file = new File(getFilesDir(), FILE_PATH);
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                BufferedReader bf = new BufferedReader(new InputStreamReader(openFileInput(FILE_PATH)));
+                String text = bf.readLine();
+
+                if (!text.isEmpty()) {
+                    OldText = text;
+                }
+            }
+
+            OutputStreamWriter fout = new OutputStreamWriter(openFileOutput(FILE_PATH, Context.MODE_PRIVATE));
+            fout.write(OldText + guardar);
+            fout.close();
+
+            return 1;
+
+        } catch (Exception ex) {
+            Log.e("Ficheros", "Error al escribir fichero a memoria interna");
+        }
+
+        return 0;
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -171,6 +207,15 @@ public class CrearEventoActivity extends AppCompatActivity implements View.OnCli
 
         // Acciones a realizar cuando se selecciona una imagen
         // Puedes usar la variable 'selectedImage' para obtener información sobre la imagen seleccionada
+    }
+
+    public void resetlbl(View view) {
+        txtNameEvent.setText("");
+        txtDescriptionEvent.setText("");
+        txtContactEvent.setText("");
+        if (lastSelectedImage != null) {
+            lastSelectedImage.setSelected(false);
+        }
     }
 
     private void Notify(String message) {

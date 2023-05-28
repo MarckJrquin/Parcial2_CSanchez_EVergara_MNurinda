@@ -1,22 +1,31 @@
 package com.example.parcial2_csanchez_evergara_mnurinda.Cliente;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parcial2_csanchez_evergara_mnurinda.Cliente.ListaClienteAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.Admin.EventAdapter;
 import com.example.parcial2_csanchez_evergara_mnurinda.MainActivity;
 import com.example.parcial2_csanchez_evergara_mnurinda.Models.Event;
 import com.example.parcial2_csanchez_evergara_mnurinda.R;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +72,25 @@ public class ClienteHomeActivity extends AppCompatActivity {
             lblClienteName.setText(name);
             lblClienteUsername.setText(username);
 
-            adapter = new ListaClienteAdapter(getApplicationContext(), FileToList());
+            adapter = new ListaClienteAdapter(getApplicationContext(), FileToList(), userID);
             lstEvents.setAdapter(adapter);
+
+            lstEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // Obtener el elemento seleccionado
+                    Event eventoSeleccionado = (Event) parent.getItemAtPosition(position);
+
+                    // Obtener los valores específicos del elemento seleccionado
+                    String eventId = String.valueOf(eventoSeleccionado.getEventID());
+                    String eventName = eventoSeleccionado.getName();
+                    // Obtener otros valores según sea necesario
+
+                    // Realizar cualquier acción con los valores obtenidos
+                    // ...
+                    Notify(eventId);
+                }
+            });
         } catch (Exception e){
             this.Notify("Error => " + e.getMessage());
         }
