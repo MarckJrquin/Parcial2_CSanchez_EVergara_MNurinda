@@ -133,16 +133,17 @@
 
         <EditText
             android:id="@+id/txtAge"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawablePadding="16dp"
-            android:fontFamily="@font/calibri"
+            android:gravity="center"
             android:hint="edad"
+            android:textSize="16sp"
+            android:inputType="number"
             android:textColorHint="#E2E0E3"
-            android:maxLines="1"
+            android:fontFamily="@font/calibri"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:maxLines="1"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/radioGroupWrapper"

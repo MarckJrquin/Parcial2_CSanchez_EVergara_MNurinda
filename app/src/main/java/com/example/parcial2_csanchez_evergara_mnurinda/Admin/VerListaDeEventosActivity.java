@@ -91,12 +91,11 @@ public class VerListaDeEventosActivity extends AppCompatActivity {
                         userFields[4],
                         userFields[5]
                 );
-
                 events.add(event);
             }
 
         }catch (Exception e) {
-            this.Notify("Error => " + e.getMessage());
+            this.Notify("No se han creado eventos");
         }
 
         return events;

@@ -17,7 +17,10 @@ import com.example.parcial2_csanchez_evergara_mnurinda.R;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class VerAsistenciaActivity extends AppCompatActivity {
 
@@ -52,7 +55,7 @@ public class VerAsistenciaActivity extends AppCompatActivity {
         // Obtener el ID pasado de la actividad anterior
         int eventId = getIntent().getIntExtra("eventId", 0);
 
-        List<String[]> data = FileToList("asistencia.txt"); // Obtén los datos del archivo de texto
+        List<String[]> data = FileToList2("asistencia.txt"); // Obtén los datos del archivo de texto
         List<String[]> users = FileToList("credenciales.txt"); // Obtén los datos del archivo de texto
         List<String[]> events = FileToList("listaDeEventos.txt"); // Obtén los datos del archivo de texto
 
@@ -102,6 +105,35 @@ public class VerAsistenciaActivity extends AppCompatActivity {
 
         return dataF;
     }
+
+
+    private List<String[]> FileToList2(String FILE_PATH) {
+        List<String[]> dataF = new ArrayList<>();
+        Set<String> uniqueData = new HashSet<>(); // Conjunto para almacenar arreglos únicos
+
+        try {
+            BufferedReader fin = new BufferedReader(new InputStreamReader(openFileInput(FILE_PATH)));
+            String line;
+            while ((line = fin.readLine()) != null) {
+                String[] arrUsers = line.split("~");
+                for (String strUser : arrUsers) {
+                    String[] userFields = strUser.split("\\|");
+                    // Verificar si el arreglo ya existe en el conjunto de datos únicos
+                    String dataKey = Arrays.toString(userFields);
+                    if (!uniqueData.contains(dataKey)) {
+                        dataF.add(userFields);
+                        uniqueData.add(dataKey);
+                    }
+                }
+            }
+            fin.close();
+        } catch (Exception e) {
+            this.Notify("Error => " + e.getMessage());
+        }
+
+        return dataF;
+    }
+
 
     private void Notify(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

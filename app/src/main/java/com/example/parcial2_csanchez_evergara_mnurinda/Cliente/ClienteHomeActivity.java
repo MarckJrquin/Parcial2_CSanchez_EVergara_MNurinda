@@ -174,7 +174,7 @@ public class ClienteHomeActivity extends AppCompatActivity {
             }
 
         }catch (Exception e) {
-            this.Notify("Error => " + e.getMessage());
+            this.Notify("Aun no hay eventos");
         }
         return events;
     }

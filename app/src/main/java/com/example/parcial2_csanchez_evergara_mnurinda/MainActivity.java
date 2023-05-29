@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }catch (Exception e) {
-            this.Notify("Error => " + e.getMessage());
+            this.Notify("No se han creado usuarios");
         }
 
         return users;
