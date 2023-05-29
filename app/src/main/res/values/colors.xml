@@ -5,4 +5,7 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="textInputLayout">#96ffffff</color>
     <color name="principal">#FFFFFF</color>
+
+    <color name="selected_background_color">#673AB7</color>
+    <color name="unselected_background_color">#808080</color>
 </resources>
